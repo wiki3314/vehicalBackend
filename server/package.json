@@ -1,0 +1,53 @@
+{
+  "name": "shared-listing-backend",
+  "version": "0.0.1",
+  "description": "shared-listing server backend.",
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://aplome.repositoryhosting.com/git/aplome/shared_listing_backend.git"
+  },
+  "author": "Nabeel Hayat <nabeel.hayat87@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "dev": "yarn build && babel-watch src/bin/www",
+    "start": "node dist/bin/www",
+    "build": "rm -rf ./dist && NPM_CONFIG_PRODUCTION=false babel -d ./dist ./src -s"
+  },
+  "dependencies": {
+    "@hapi/joi": "^17.1.0",
+    "axios": "^0.21.1",
+    "babel-runtime": "^6.26.0",
+    "bcrypt": "^4.0.1",
+    "bluebird": "^3.7.2",
+    "body-parser": "^1.19.0",
+    "connect-mongo": "^3.2.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-session": "^1.17.0",
+    "express-validation": "^3.0.2",
+    "http-status": "^1.4.2",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.9.3",
+    "morgan": "^1.9.1",
+    "passport": "^0.4.1",
+    "passport-jwt": "^4.0.0",
+    "passport-local": "^1.0.0",
+    "passport-local-mongoose": "^6.0.1",
+    "uuid": "^7.0.2",
+    "yarn": "^1.22.4"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "babel-watch": "^2.0.7"
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "name": "vehical-backend",
+  "version": "1.0.2",
+  "description": "",
+  "main": "app.js",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "NODE_ENV=staging yarn run start:server",
+    "build": "yarn run build:server",
+    "dev": "yarn run build && cd server && yarn dev && cd ..",
+    "start:client": "cd client && yarn start && cd ..",
+    "start:server": "cd server && yarn install && yarn start && cd ..",
+    "start:docker": "docker-compose up",
+    "build:client": "cd client && yarn install && yarn build && cd ..",
+    "build:server": "cd server && yarn install && yarn build && cd ..",
+    "test:server": "eslint 'server' -c .eslintrc --ext js,jsx",
+    "test:client": "eslint 'client' -c .eslintrc --ext js,jsx",
+    "eslint-check": "eslint --print-config .eslintrc.js | eslint-config-prettier-check",
+    "precommit": "yarn test",
+    "prepush": "yarn test"
+  },
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-node": "^11.0.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-react": "^7.18.3",
+    "eslint-plugin-react-hooks": "^2.5.0",
+    "husky": "^4.2.3",
+    "lint": "^0.7.0",
+    "lint-staged": "^10.0.7",
+    "prettier": "1.19.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js, jsx}": [
+      "eslint"
+    ],
+    "*.{js, jsx, json, md}": [
+      "prettier --list-different"
+    ]
+  }
+}
