@@ -1,4 +1,5 @@
 import httpStatus from 'http-status';
+import generator from 'generate-password';
 
 import Validation from './auth.validation';
 import User from '../../../models/user';
@@ -23,25 +24,26 @@ AuthController.signup = async (req, res, next) => {
   }
   try {
     const { name, email } = value;
+    console.log('value ', value);
 
     const user = await AuthService.fetchUser({ email });
 
     if (user) {
-      // try {
-      //   const email = await sendEmail({ name, email, password: '1234' });
-      //   console.log('email', email);
-      // } catch (error) {
-      //   console.log('error ', error);
-      // }
       return res.status(httpStatus.OK).json({ statusCode: 200, success: true, user });
     } else {
-      const newUser = await AuthService.createUser({ name, email, password: '1234' });
-      // try {
-      //   const email = await sendEmail({ name, email, password: '1234' });
-      //   console.log('email', email);
-      // } catch (error) {
-      //   console.log('error ', error);
-      // }
+      let password = generator.generate({
+        length: 10,
+        numbers: true,
+      });;
+      
+
+      const newUser = await AuthService.createUser({ name, email, password});
+      try {
+        const emailRes = await sendEmail({ name, email, password });
+        console.log('email', emailRes);
+      } catch (error) {
+        console.log('error ', error);
+      }
       return res.status(httpStatus.OK).json({ statusCode: 200, success: true, user: newUser });
     }
   } catch (err) {
