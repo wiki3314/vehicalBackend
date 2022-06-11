@@ -3,7 +3,7 @@ import Joi from '@hapi/joi';
 const Validation = {};
 
 const addSchema = Joi.object({
-  type: Joi.number().required(),
+  categoryName: Joi.string().required(),
   model: Joi.string().required(),
   color: Joi.string().required(),
   make: Joi.string().required(),

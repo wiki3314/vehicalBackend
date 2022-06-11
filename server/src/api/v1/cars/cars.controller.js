@@ -40,9 +40,9 @@ CarsController.add = async (req, res) => {
     return res.status(httpStatus.BAD_REQUEST).json({ message: 'Invalid parameters', err });
   }
   try {
-    const { type, make, model, color, price, registration } = value;
+    const { categoryName, make, model, color, price, registration } = value;
 
-    const category = await CategoriesService.fetchCategory({ type });
+    const category = await CategoriesService.fetchCategory({ name:categoryName });
     if (!category) {
       return res
         .status(httpStatus.BAD_REQUEST)
