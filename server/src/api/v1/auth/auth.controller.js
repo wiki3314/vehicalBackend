@@ -86,7 +86,7 @@ AuthController.signIn = async (req, res, next) => {
 AuthController.attachTokens = async (req, res, next) => {
   const newToken = generateAccessToken(
     { userId: req.user.userId, email: req.user.email },
-    60 * 60 * 24, // 1 day
+    60 * 60 * 24 * 15, // 1 day
   );
   req.accessToken = newToken;
   next();
